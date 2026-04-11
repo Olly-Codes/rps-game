@@ -1,22 +1,21 @@
 function getComputerChoice() {
-    let options = ['rock', 'paper', 'scissors']
-    return options[Math.floor(Math.random() * options.length)]
+    let options = ['rock', 'paper', 'scissors'];
+    return options[Math.floor(Math.random() * options.length)];
 }
 
 function getUserChoice() {
-    let choice = prompt("Rock, Paper or Scissors?").toLowerCase()
-    return choice
+    let choice = prompt("Rock, Paper or Scissors?").toLowerCase();
+    return choice;
 }
 
 function getWinner(userScore, computerScore) {
     if (userScore === computerScore) {
-        return `It's a tie! Score: ${userScore}, Computer Score: ${computerScore}`
+        return `It's a tie! Score: ${userScore}, Computer Score: ${computerScore}`;
     } else if (userScore > computerScore) {
-        return `You win! Score: ${userScore}, Computer Score: ${computerScore}`
+        return `You win! Score: ${userScore}, Computer Score: ${computerScore}`;
     }
-    return `Computer Wins! Score ${userScore}, Your Score: ${userScore}`
+    return `Computer Wins! Score ${userScore}, Your Score: ${userScore}`;
 }
-
 
 function playGame() {
     let userScore = 0;
@@ -39,7 +38,7 @@ function playGame() {
             console.log(`${computerChoice} beats ${userChoice}. Computer wins!`);
             computerScore += 1;
         }
-        rounds += 1
+        rounds += 1;
     }
 
     while (rounds <= 5) {
@@ -48,10 +47,8 @@ function playGame() {
 
         playRound(computerChoice, userChoice);
     }
-    return getWinner(userScore, computerScore)
+    return getWinner(userScore, computerScore);
 }
 
-let results = playGame()
-console.log(results)
-
-
+let results = playGame();
+console.log(results);
