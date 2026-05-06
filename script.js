@@ -21,6 +21,14 @@ function playGame() {
     let userScore = 0;
     let computerScore = 0;
     let rounds = 1;
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            const userChoice = e.target.textContent.toLowerCase();
+            playRound(getComputerChoice(), userChoice);
+        });
+    });
 
     function playRound(computerChoice, userChoice) {
         if (userChoice === computerChoice) {
@@ -41,14 +49,13 @@ function playGame() {
         rounds += 1;
     }
 
-    while (rounds <= 5) {
-        let userChoice = getUserChoice();
-        let computerChoice = getComputerChoice();
+    // while (rounds <= 5) {
+    //     let userChoice = getUserChoice();
+    //     let computerChoice = getComputerChoice();
 
-        playRound(computerChoice, userChoice);
-    }
-    return getWinner(userScore, computerScore);
+    //     playRound(computerChoice, userChoice);
+    // }
+    // return getWinner(userScore, computerScore);
 }
 
-let results = playGame();
-console.log(results);
+playGame();
