@@ -22,8 +22,11 @@ function playGame() {
     const cpuScore = document.querySelector("#cpu-score");
     const gameRounds = document.querySelector("#rounds");
     const status = document.querySelector("#status");
-
     const buttons = document.querySelectorAll("button");
+
+    let userScore = 0;
+    let computerScore = 0;
+    let rounds = 0;
 
     buttons.forEach((btn) => {
         btn.addEventListener("click", (e) => {
@@ -32,11 +35,9 @@ function playGame() {
         });
     });
 
-    let userScore = 0;
-    let computerScore = 0;
-    let rounds = 1;
-
     function playRound(computerChoice, userChoice) {
+        if (rounds >= 5) return;
+
         if (userChoice === computerChoice) {
             status.textContent = "Tie";
         } else if (userChoice === 'rock' && computerChoice === 'scissors') {
@@ -59,6 +60,11 @@ function playGame() {
         }
         rounds += 1;
         gameRounds.textContent = rounds;
+
+        if (rounds === 5) {
+            status.textContent = getWinner(userScore, computerScore);
+        }
+
     }
 }
 
