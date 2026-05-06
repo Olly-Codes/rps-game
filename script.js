@@ -18,9 +18,11 @@ function getWinner(userScore, computerScore) {
 }
 
 function playGame() {
-    let userScore = 0;
-    let computerScore = 0;
-    let rounds = 1;
+    const playerScore = document.querySelector("#p-score");
+    const cpuScore = document.querySelector("#cpu-score");
+    const gameRounds = document.querySelector("#rounds");
+    const status = document.querySelector("#status");
+
     const buttons = document.querySelectorAll("button");
 
     buttons.forEach((btn) => {
@@ -30,32 +32,34 @@ function playGame() {
         });
     });
 
+    let userScore = 0;
+    let computerScore = 0;
+    let rounds = 1;
+
     function playRound(computerChoice, userChoice) {
         if (userChoice === computerChoice) {
-            console.log("tie");
+            status.textContent = "Tie";
         } else if (userChoice === 'rock' && computerChoice === 'scissors') {
-            console.log(`${userChoice} beats ${computerChoice}. Player wins!`);
+            status.textContent = `${userChoice} beats ${computerChoice}. Player wins!`;
             userScore += 1;
+            playerScore.textContent = userScore;
         } else if (userChoice === 'paper' && computerChoice === 'rock') {
-            console.log(`${userChoice} beats ${computerChoice}. Player wins!`);
+            status.textContent = `${userChoice} beats ${computerChoice}. Player wins!`;
             userScore += 1;
+            playerScore.textContent = userScore;
         } else if (userChoice === 'scissors' && computerChoice === 'paper') {
-            console.log(`${userChoice} beats ${computerChoice}. Player wins!`);
+            status.textContent = `${userChoice} beats ${computerChoice}. Player wins!`;
             userScore += 1;
+            playerScore.textContent = userScore;
         } else {
-            console.log(`${computerChoice} beats ${userChoice}. Computer wins!`);
+            status.textContent = `${computerChoice} beats ${userChoice}. Computer wins!`;
             computerScore += 1;
+            cpuScore.textContent = computerScore;
+
         }
         rounds += 1;
+        gameRounds.textContent = rounds;
     }
-
-    // while (rounds <= 5) {
-    //     let userChoice = getUserChoice();
-    //     let computerChoice = getComputerChoice();
-
-    //     playRound(computerChoice, userChoice);
-    // }
-    // return getWinner(userScore, computerScore);
 }
 
 playGame();
