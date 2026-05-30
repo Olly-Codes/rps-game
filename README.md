@@ -1,4 +1,4 @@
-# odin_RPS_game
+# rps-game
 A simple console based rock paper scissors game
 
 I have learnt how to:
